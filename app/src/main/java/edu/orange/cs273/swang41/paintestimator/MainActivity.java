@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         editor.clear();
         editor.putFloat("length", mRoom.getmLength());
         editor.putFloat("width", mRoom.getmWidth());
-        editor.putFloat("heigth", mRoom.getmHeight());
+        editor.putFloat("height", mRoom.getmHeight());
         editor.commit();
     }
     @Override
