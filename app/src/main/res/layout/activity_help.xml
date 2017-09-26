@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.orange.cs273.swang41.paintestimator.HelpActivity">
+    tools:context="edu.orange.cs273.swang41.paintestimator.HelpActivity"
+    android:background="@drawable/paintbackground">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/estimatedPaintTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estimated Paint Required: 0.0 gallons"
+        android:textSize="@dimen/large_text_size"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/returnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/return_btn"
+        android:layout_below="@id/estimatedPaintTextView"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="goBack"/>
+
+    <TextView
+        android:id="@+id/explanationTextView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="@string/help_text"
+        android:textSize="@dimen/normal_text_size"
+        android:layout_below="@id/returnButton"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

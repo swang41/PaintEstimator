@@ -31,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
         mWidthEditText = (EditText) findViewById(R.id.widthEditText);
         mHeightEditText = (EditText) findViewById(R.id.heightEditText);
 
-        mDoorsEditText = (EditText) findViewById(R.id.doorEditText);
+        mDoorsEditText = (EditText) findViewById(R.id.doorsEditText);
+        mWindowsEditText = (EditText) findViewById(R.id.windowsEditText);
 
+        mGallonTextView = (TextView) findViewById(R.id.gallonTextView);
     }
 
     private void loadSharedPreferences() {
@@ -41,8 +43,15 @@ public class MainActivity extends AppCompatActivity {
             // Load all the room information.
             mRoom.setmLength(mPrefs.getFloat("length", 0.0f));
             mDoorsEditText.setText(String.valueOf(mRoom.getmDoors()));
-
+            mRoom.setmWidth(mPrefs.getFloat("height", 0.0f));
+            mWidthEditText.setText(String.valueOf(mRoom.getmWidth()));
             mRoom.setmHeight(mPrefs.getFloat("height", 0.0f));
+            mHeightEditText.setText(String.valueOf(mRoom.getmHeight()));
+
+            mRoom.setmDoors(mPrefs.getInt("doors", 0));
+            mDoorsEditText.setText(String.valueOf(mRoom.getmDoors()));
+            mRoom.setmWindows(mPrefs.getInt("windows", 0));
+            mWindowsEditText.setText(String.valueOf(mRoom.getmWindows()));
         }
     }
 
@@ -52,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         editor.putFloat("length", mRoom.getmLength());
         editor.putFloat("width", mRoom.getmWidth());
         editor.putFloat("height", mRoom.getmHeight());
+        editor.putInt("doors", mRoom.getmDoors());
+        editor.putInt("windows", mRoom.getmWindows());
         editor.commit();
     }
     @Override
@@ -67,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
         // Update model first, then calculate
         mRoom.setmLength(Float.parseFloat(mLengthEditText.getText().toString()));
         mRoom.setmHeight(Float.parseFloat(mWidthEditText.getText().toString()));
-
+        mRoom.setmWidth(Float.parseFloat(mWidthEditText.getText().toString()));
+        mRoom.setmDoors(Integer.parseInt(mDoorsEditText.getText().toString()));
+        mRoom.setmWindows(Integer.parseInt(mWindowsEditText.getText().toString()));
 
         mGallonTextView.setText(String.valueOf(getString(R.string.interior_surface_text) + mRoom.totalSurfaceArea() +
                 "\n" + getString(R.string.gallon_need_text) + mRoom.gallonOfPaintRequired()));
@@ -79,5 +92,6 @@ public class MainActivity extends AppCompatActivity {
         // Intent: specify where to start context and where we're going next acitvity
         Intent helpIntent = new Intent(this, HelpActivity.class);
         helpIntent.putExtra("gallons", mRoom.gallonOfPaintRequired());
+        this.startActivity(helpIntent);
     }
 }
