@@ -17,11 +17,11 @@ public class HelpActivity extends AppCompatActivity {
         Intent helperIntent = getIntent();
         Bundle extra = helperIntent.getExtras();
 
-        if(extra != null) {
-            String output = "Estimated Paint Required: " + extra.getString("gallons") +
+        //if(extra != null) {
+        String output = "Estimated Paint Required: " + helperIntent.getStringExtra("gallons") +
                     " gallons";
-            mEstimatePaintTextView.setText(output);
-        }
+        mEstimatePaintTextView.setText(output);
+        //}
     }
 
     public void goBack(View v) {
