@@ -15,10 +15,10 @@ public class HelpActivity extends AppCompatActivity {
 
         mEstimatePaintTextView = (TextView) findViewById(R.id.estimatedPaintTextView);
         Intent helperIntent = getIntent();
-        Bundle extra = helperIntent.getExtras();
+        //Bundle extra = helperIntent.getExtras();
 
         //if(extra != null) {
-        String output = "Estimated Paint Required: " + helperIntent.getStringExtra("gallons") +
+        String output = "Estimated Paint Required: " + String.valueOf(helperIntent.getFloatExtra("gallons",  0.0f)) +
                     " gallons";
         mEstimatePaintTextView.setText(output);
         //}
